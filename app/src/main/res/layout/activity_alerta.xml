@@ -4,7 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ActivityNovaRota"
+    android:padding="30px"
     android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/txtLocations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30px"
+        android:background="#FFFFFF"
+        android:text="Escolha sua categoria"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
 
 
     <Spinner
@@ -15,12 +28,28 @@
         android:layout_marginEnd="30dp"
         android:background="@color/ic_add_background" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:layout_margin="16dp">
 
-    <Button
-        android:id="@+id/btnFoto"
-        android:text="Foto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom">
+
+            <Button
+                android:id="@+id/btnFoto"
+                android:text="Foto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

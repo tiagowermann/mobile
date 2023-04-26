@@ -21,6 +21,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Base64;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,8 +63,8 @@ public class ActivityNovaRota extends AppCompatActivity {
         btnIniciar = findViewById(R.id.btnIniciar);
         btnParar = findViewById(R.id.btnParar);
         btnAlerta = findViewById(R.id.btnAlerta);
-
         textCoordenadas = findViewById(R.id.localizacaoTextView);
+
 
 
         btnIniciar.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +89,9 @@ public class ActivityNovaRota extends AppCompatActivity {
                     String selectQuery = "SELECT MAX(id) as max_id FROM passeios";
                     Cursor cursor = db.rawQuery(selectQuery, null);
 
+                    btnAlerta.setVisibility(View.VISIBLE);
+                    btnParar.setVisibility(View.VISIBLE);
+
                     if(cursor.moveToNext()) {
                         int id = cursor.getInt(cursor.getColumnIndex("max_id"));
                         rota.setId(id);
@@ -96,7 +100,10 @@ public class ActivityNovaRota extends AppCompatActivity {
 
 
                 } else {
-                    Toast.makeText(ActivityNovaRota.this, "Favor preencha os dados!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ActivityNovaRota.this, "Favor preencha os dados!", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(ActivityNovaRota.this, "Preencha os dados!!", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
             }
         });
@@ -104,11 +111,13 @@ public class ActivityNovaRota extends AppCompatActivity {
         btnParar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                locationManager.stopListener();
-
-                db.execSQL("UPDATE passeios SET locais = '" + rota.getLocais() + "' WHERE id = " + rota.getId());
-
-                finish();
+                if(validar()) {
+                    locationManager.stopListener();
+                    db.execSQL("UPDATE passeios SET locais = '" + rota.getLocais() + "' WHERE id = " + rota.getId());
+                    finish();
+                } else {
+                    Toast.makeText(ActivityNovaRota.this, "Inicie a rota!", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
