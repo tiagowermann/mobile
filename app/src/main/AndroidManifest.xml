@@ -11,10 +11,10 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLocation"
+        android:icon="@drawable/icon_app"
         tools:targetApi="31">
         <activity
             android:name=".AlertaActivity"
@@ -35,7 +35,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDGZeSWJ6x1xE3iZeCBJ2elPSRjY6QAIFY" />
+            android:value="API_KEY" />
 
         <activity
             android:name=".MapsActivity"

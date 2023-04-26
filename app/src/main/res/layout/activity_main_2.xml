@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="30px"
     android:orientation="vertical">
 
     <TextView
@@ -9,8 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="30px"
-        android:background="#FAFAFA"
-        android:text="Escolha sua rota"
+        android:background="#FFFFFF"
+        android:text="*Rota"
+        android:textColor="@color/black"
         android:textSize="20dp" />
 
     <Spinner
@@ -24,7 +26,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:gravity="end"
         android:layout_margin="16dp">
 
@@ -36,8 +37,19 @@
             android:layout_gravity="bottom">
 
             <Button
+                android:id="@+id/btnEnviar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="9dp"
+                android:layout_gravity="bottom"
+                android:text="Enviar" />
+
+            <Button
                 android:id="@+id/btnMostrar"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginRight="6dp"

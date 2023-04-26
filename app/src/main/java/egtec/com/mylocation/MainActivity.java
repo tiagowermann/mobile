@@ -85,13 +85,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String rota = spinRotas.getSelectedItem().toString().split(" ")[0];
+                if(validar()) {
 
-                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                    String rota = spinRotas.getSelectedItem().toString().split(" ")[0];
 
-                intent.putExtra("rota", rota);
+                    Intent intent = new Intent(MainActivity.this, MapsActivity.class);
 
-                startActivity(intent);
+                    intent.putExtra("rota", rota);
+
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Escolha uma rota!", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -117,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
     private void loadSpinnerData() {
         ArrayList<String> rotas = getRotas();
 
+        // Adding "Escolha a sua rota" option
+        labels.add(0, "Escolha uma rota...");
+
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, rotas);
 
@@ -141,6 +149,17 @@ public class MainActivity extends AppCompatActivity {
 
         return labels;
     }
+
+    public boolean validar() {
+        boolean ok = true;
+
+        if (spinRotas.getSelectedItemPosition() == 0)
+            ok = false;
+
+
+        return ok;
+    }
+
 
     private boolean checkPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)

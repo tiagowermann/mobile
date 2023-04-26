@@ -66,6 +66,9 @@ public class AlertaActivity extends AppCompatActivity {
     private void loadSpinnerData() {
         ArrayList<String> rotas = getCategorias();
 
+        // Adding "Escolha a sua rota" option
+        labels.add(0, "Escolha uma categoria...");
+
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, rotas);
 
